@@ -33,6 +33,23 @@
 <body class="container mx-auto mt-10 mb-10 max-w-lg">
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
 
+
+    <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('create-poll');
+
+$__html = app('livewire')->mount($__name, $__params, 'bzBiWM0', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
 </body>
 
 </html>
