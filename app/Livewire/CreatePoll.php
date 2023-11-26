@@ -3,12 +3,21 @@
 namespace App\Livewire;
 
 use App\Models\Poll;
+use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
 class CreatePoll extends Component
 {
     public $title;
     public array $options = ['First'];
+    public array $rules = [
+        'title' => 'required|min:3|max:255',
+        'options' => 'required|array|min:1|max:10',
+        'options.*' => 'required|min:1|max:255' // every option in the options array
+    ];
+    public array $messages = [
+      'options.*' => "The option can't be empty"
+    ];
     public function render()
     {
         return view('livewire.create-poll');
@@ -20,13 +29,16 @@ class CreatePoll extends Component
         unset($this->options[$i]);
         $this->options = array_values($this->options);
     }
+
+    /**
+     * @throws ValidationException
+     */
+    public function updated($propertyName)
+    {  // real time validation
+        $this->validateOnly($propertyName);
+    }
     public function createPoll(): void{
-//        $poll = Poll::create([
-//            'title' => $this->title
-//        ]);
-//        foreach($this->options as $optionName){
-//            $poll->options()->create(['name' => $optionName]);
-//        }
+        $this->validate();
         Poll::create([
             'title' => $this->title
         ])->options()->createMany(  // createMany accepts a collection of values
