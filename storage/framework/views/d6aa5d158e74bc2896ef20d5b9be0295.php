@@ -33,14 +33,16 @@
 <body class="container mx-auto mt-10 mb-10 max-w-lg">
     <?php echo \Livewire\Mechanisms\FrontendAssets\FrontendAssets::scripts(); ?>
 
-
-    <?php
+    
+    <div>
+        <h2 class="mb-4 mt-4 text-2xl">Create Poll</h2>
+        <?php
 $__split = function ($name, $params = []) {
     return [$name, $params];
 };
 [$__name, $__params] = $__split('create-poll');
 
-$__html = app('livewire')->mount($__name, $__params, 'bzBiWM0', $__slots ?? [], get_defined_vars());
+$__html = app('livewire')->mount($__name, $__params, 'zbZf9Uj', $__slots ?? [], get_defined_vars());
 
 echo $__html;
 
@@ -50,6 +52,27 @@ unset($__params);
 unset($__split);
 if (isset($__slots)) unset($__slots);
 ?>
+    </div>
+
+    <div>
+        <h2 class="mb-4 mt-4 text-2xl">Available Polls</h2>
+        <?php
+$__split = function ($name, $params = []) {
+    return [$name, $params];
+};
+[$__name, $__params] = $__split('polls');
+
+$__html = app('livewire')->mount($__name, $__params, 'uAgiEwi', $__slots ?? [], get_defined_vars());
+
+echo $__html;
+
+unset($__html);
+unset($__name);
+unset($__params);
+unset($__split);
+if (isset($__slots)) unset($__slots);
+?>
+    </div>
 </body>
 
 </html>
