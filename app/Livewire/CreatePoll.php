@@ -47,6 +47,7 @@ class CreatePoll extends Component
                 ->all()  // Getting the row array
         );
         $this->reset(['title','options']);
+        $this->dispatch('pollCreated'); // communicate with Polls
     }
 //    public function mount(){
 //      for initializing properties if you have a lot of logic to put
